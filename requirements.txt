@@ -1,6 +1,6 @@
 fastapi==0.68.2
 uvicorn==0.15.0
-openai==0.12.4
+openai==0.28.0
 pydantic==1.9.0
 
 The line sessions[user_name] = UserSession(user_name) in your FastAPI code does the following:
@@ -18,7 +18,7 @@ http://192.168.19.80:8000/docs#/
 
  http://192.168.80.60:8000//chat_interaction/
 
- 
+
 
 http://192.168.80.60:8000/docs#/default/start_session_start_session__post  (cardio)
 

@@ -1,15 +1,13 @@
 import openai
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import Optional
-import uvicorn
 
 app = FastAPI()
 
 # Set up OpenAI API key
 openai.api_key = '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'
 
-# Define the prompt for the cardiovascular specialist chatbot's conversation flow
+# Define prompt for cardio specialist
 prompt_cardio = """
 Imagine you are an expert in cardiovascular health, ready to provide personalized medical guidance to patients facing heart-related issues. Your goal is to ensure a patient-centric, informative, and supportive consultation. Here's how you can approach it:
 
@@ -40,40 +38,40 @@ Imagine you are an expert in cardiovascular health, ready to provide personalize
 Keep the conversation empathetic, informative, and centered around the patient's concerns, fostering a collaborative approach to their cardiovascular care.
 """
 
-# Initialize conversation
-class ChatbotSession:
-    def __init__(self):
-        self.chat_history = [{"role": "system", "content": prompt_cardio}]
-
-    def interact(self, user_input):
-        self.chat_history.append({"role": "user", "content": user_input})
-
-        try:
-            completion = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=self.chat_history
-            )
-            response = completion.choices[0].message["content"]
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=str(e))
-
-        self.chat_history.append({"role": "system", "content": response})
-        return response
-
-session = ChatbotSession()
+# Dictionary to store conversation history for each user
+conversation_sessions = {}
 
 # Define the input model for chat interactions
 class ChatInput(BaseModel):
+    user_id: str
     user_input: str
 
 # Endpoint to handle chat interactions for cardiovascular specialist chatbot
 @app.post("/chat_cardio/")
 def chat_cardio(chat_input: ChatInput):
+    user_id = chat_input.user_id
     user_input = chat_input.user_input
-    response = session.interact(user_input)
-    return {"response": response}
+
+    if user_id not in conversation_sessions:
+        conversation_sessions[user_id] = [{"role": "system", "content": prompt_cardio}]
+    
+    # Add user input to chat history
+    conversation_sessions[user_id].append({"role": "user", "content": user_input})
+
+    # Generate chatbot response
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=conversation_sessions[user_id]
+    )
+
+    # Add chatbot response to chat history
+    conversation_sessions[user_id].append({"role": "system", "content": completion.choices[0].message["content"]})
+
+    return {"response": completion.choices[0].message["content"]}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)  # Run the FastAPI app
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+
 
 #http://localhost:8000/chat_cardio/
