@@ -12,6 +12,7 @@ app = FastAPI()
 # Set up OpenAI API key
 openai.api_key = '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'
 
+# Define the prompt for the chatbot's conversation flow
 prompt = """
 Act as an expert clinical psychiatrist to talk to patients with mental health issues in order to accurately diagnose their problems by performing the following steps one by one:
 1. Greet the patient and introduce yourself as a chatbot trained to help people through their mental health issues.
@@ -32,35 +33,37 @@ Act as an expert clinical psychiatrist to talk to patients with mental health is
 Keep in mind that you need to act like an actual clinical psychiatrist who knows how to ease the patient into sharing enough info for the diagnosis by keeping the conversation flowing with one question at a time instead of overwhelming the patient with a lot of information in one output.
 """
 
+# Define the UserSession class to manage chat sessions
 class UserSession:
     def __init__(self, user_name):
         self.user_name = user_name
-        self.chat_history = [{"role": "system", "content": prompt}]
+        self.chat_history = [{"role": "system", "content": prompt}]  # Initialize chat history with the prompt
 
     def save_chat_message(self, message):
-        self.chat_history.append({"role": "system", "content": message})
+        self.chat_history.append({"role": "system", "content": message})  # Save chat messages to the history
 
     def chat_interaction(self, user_input):
         if user_input.lower() == "exit":
-            return {"chat_history": self.chat_history}
+            return {"chat_history": self.chat_history}  # End the session if user input is 'exit'
         
-        self.chat_history.append({"role": "user", "content": user_input})
+        self.chat_history.append({"role": "user", "content": user_input})  # Save user input to the chat history
 
         try:
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=self.chat_history
             )
-            response = completion.choices[0].message["content"]
+            response = completion.choices[0].message["content"]  # Get the chatbot's response
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
-        self.save_chat_message(response)
+        self.save_chat_message(response)  # Save chatbot's response to the history
 
-        return {"chat_history": self.chat_history}
+        return {"chat_history": self.chat_history}  # Return the updated chat history
 
 sessions_file = "sessions.pkl"
 
+# Function to load user sessions from a pickle file
 def load_sessions():
     if not os.path.exists(sessions_file):
         return {}  # Return an empty dictionary if sessions file doesn't exist
@@ -68,37 +71,41 @@ def load_sessions():
     with open(sessions_file, 'rb') as f:
         return pickle.load(f)
 
+# Function to save user sessions to a pickle file
 def save_sessions(sessions):
     with open(sessions_file, 'wb') as f:
         pickle.dump(sessions, f)
 
 sessions = load_sessions()
 
+# Define the input model for chat interactions
 class ChatInput(BaseModel):
     user_input: str
     user_name: Optional[str] = None
 
+# Endpoint to start a new chat session for a user
 @app.post("/start_session/")
 def start_session(user_input: str):
     if user_input not in sessions:
-        sessions[user_input] = UserSession(user_input)
-        save_sessions(sessions)
+        sessions[user_input] = UserSession(user_input)  # Create a new UserSession if user not in sessions
+        save_sessions(sessions)  # Save sessions to file
         return {"message": f"Session started for user: {user_input}"}
     else:
         return {"message": f"Session found for user: {user_input}"}
 
+# Endpoint to handle chat interactions during a session
 @app.post("/chat_interaction/")
 def chat_interaction(chat_input: ChatInput):
     user_name = chat_input.user_name
     user_input = chat_input.user_input
 
     if user_name not in sessions:
-        sessions[user_name] = UserSession(user_name)
+        sessions[user_name] = UserSession(user_name)  # Create a new session if user not in sessions
     else:
         session = sessions[user_name]
-        return session.chat_interaction(user_input)
+        return session.chat_interaction(user_input)  # Perform chat interaction
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)  # Run the FastAPI app
 
-#uvicorn main:app --host 192.168.19.69 --port 8000 --reload
+# uvicorn main:app --host 192.168.19.69 --port 8000 --reload
