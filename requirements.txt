@@ -3,4 +3,23 @@ uvicorn==0.15.0
 openai==0.12.4
 pydantic==1.9.0
 
+The line sessions[user_name] = UserSession(user_name) in your FastAPI code does the following:
 
+sessions is a dictionary that keeps track of user sessions in your chatbot application.
+user_name is a unique identifier for each user interacting with the chatbot.
+UserSession(user_name) creates a new instance of the UserSession class, which represents a session for a specific user.
+sessions[user_name] = ... stores this new UserSession instance in the sessions dictionary, associating it with the user's unique identifier (user_name).
+So, when a new user interacts with your chatbot through FastAPI, this line ensures that a new session is created specifically for that user, allowing the chatbot to keep track of the conversation history and maintain context between interactions for that user.
+
+
+uvicorn main:app --host 192.168.19.69 --port 8000 --reload
+
+http://192.168.19.80:8000/docs#/
+
+ http://192.168.80.60:8000//chat_interaction/
+
+ 
+
+http://192.168.80.60:8000/docs#/default/start_session_start_session__post  (cardio)
+
+psy (http://127.0.0.1:8000/docs#/default/start_session_start_session__post)
