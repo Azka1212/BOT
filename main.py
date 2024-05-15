@@ -37,29 +37,29 @@ Keep in mind that you need to act like an actual clinical psychiatrist who knows
 class UserSession:
     def __init__(self, user_name):
         self.user_name = user_name
-        self.chat_history = [{"role": "system", "content": prompt}]  # Initialize chat history with the prompt
+        self.chat_history = [{"role": "assistant", "content": prompt}]  # Initialize chat history with the prompt
 
     def save_chat_message(self, message):
-        self.chat_history.append({"role": "system", "content": message})  # Save chat messages to the history
+        self.chat_history.append({"role": "assistant", "content": message})  # Save chat messages to the history
 
-    def chat_interaction(self, user_input):
-        if user_input.lower() == "exit":
-            return {"chat_history": self.chat_history}  # End the session if user input is 'exit'
-        
-        self.chat_history.append({"role": "user", "content": user_input})  # Save user input to the chat history
+    def chat_interaction(self, response):
+        if response.lower() == "exit":
+            return {"response": "Session ended. Thank you for your time."}  # End the session if user input is 'exit'
+
+        self.chat_history.append({"role": "user", "content": response})  # Save user input to the chat history
 
         try:
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=self.chat_history
             )
-            response = completion.choices[0].message["content"]  # Get the chatbot's response
+            latest_response = completion.choices[0].message["content"]  # Get the latest chatbot's response
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
-        self.save_chat_message(response)  # Save chatbot's response to the history
+        self.save_chat_message(latest_response)  # Save the latest chatbot's response to the history
 
-        return {"chat_history": self.chat_history}  # Return the updated chat history
+        return {"response": latest_response}  # Return only the latest chatbot response
 
 sessions_file = "sessions.pkl"
 
@@ -80,7 +80,7 @@ sessions = load_sessions()
 
 # Define the input model for chat interactions
 class ChatInput(BaseModel):
-    user_input: str
+    response: str
     user_name: Optional[str] = None
 
 # Endpoint to start a new chat session for a user
@@ -97,15 +97,13 @@ def start_session(user_input: str):
 @app.post("/chat_interaction/")
 def chat_interaction(chat_input: ChatInput):
     user_name = chat_input.user_name
-    user_input = chat_input.user_input
+    response = chat_input.response  # Updated variable name from user_input to response
 
     if user_name not in sessions:
         sessions[user_name] = UserSession(user_name)  # Create a new session if user not in sessions
     else:
         session = sessions[user_name]
-        return session.chat_interaction(user_input)  # Perform chat interaction
+        return session.chat_interaction(response)  # Updated variable name from user_input to response
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)  # Run the FastAPI app
-
-# uvicorn main:app --host 192.168.19.69 --port 8000 --reload
