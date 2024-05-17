@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "content": "hello"
+    },
+    {
+        "role": "system",
+        "content": "Hello! I'm here to assist you with any mental health concerns you might have. Please feel free to share your thoughts and feelings here as everything you share will be kept confidential. Could you please introduce yourself?"
+    },
+    {
+        "role": "user",
+        "content": "my name is stark"
+    },
+    {
+        "role": "system",
+        "content": "Hello Stark, I'm here to help you with any mental health issues you might be facing. Please know that our conversation here is strictly confidential. How is your day going? How have you been feeling lately?"
+    },
+    {
+        "role": "user",
+        "content": "not good, the day has already started with a bad luck"
+    },
+    {
+        "role": "system",
+        "content": "1. Hello, I'm a chatbot designed to offer support for mental health concerns. Your well-being is important. \n2. Please know that our conversation is private and confidential.\n3. Could you please share your name with me?\n4. I\u2019m sorry to hear that your day started off on a rough note. How have you been coping with the challenges today? Is there something specific bothering you that you would like to talk about?\n5. When you say it started with bad luck, what exactly happened this morning that made you feel this way? How has it been affecting your mood and thoughts throughout the day?\n"
+    },
+    {
+        "role": "user",
+        "content": "very furious"
+    },
+    {
+        "role": "system",
+        "content": "Hello, I'm here to listen and help you through your mental health concerns. My name is [Your Name], and I'm a chatbot trained to assist with these issues. Please know that any information you share with me will be kept strictly confidential. \n\nHow is your day going? Are you feeling furious right now? If so, would you like to talk about what might be bothering you?"
+    }
+]

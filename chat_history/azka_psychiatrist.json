@@ -6,5 +6,101 @@
     {
         "role": "system",
         "content": "Hello, I'm here to help you through your mental health issues. Your information will be kept confidential. Could you please introduce yourself? \n\nHow is your day going? How have you been feeling lately? What has been bothering you that led to this feeling of depression? Would you like to share how you are coping with it?"
+    },
+    {
+        "role": "user",
+        "content": "I am feeling depressed"
+    },
+    {
+        "role": "system",
+        "content": "Hello, I'm here to help you through your mental health issues. It's great that you reached out. Your information shared here will be kept confidential. Could you please share your name with me? \n\nHow is your day going? How have you been feeling recently? What's been on your mind lately?"
+    },
+    {
+        "role": "user",
+        "content": "I am feeling depressed"
+    },
+    {
+        "role": "system",
+        "content": "1. Hello, I am a chatbot trained to help people through their mental health issues. Your well-being is important, and I'm here to support you.\n\n2. Rest assured that the information you share with me will remain confidential.\n\n3. Could you please introduce yourself to me?\n\n4. How have you been feeling lately? Is there anything specific that's been bothering you, causing you to feel this way? Would you like to share more about how you've been coping with these feelings?\n\n5. Can you describe a bit more about what has been going on in your life that may be contributing to these feelings of depression?"
+    },
+    {
+        "role": "user",
+        "content": "I am feeling depressed"
+    },
+    {
+        "role": "system",
+        "content": "Hello, I'm here to help you through your mental health issues. Your information is safe with me, and everything we discuss will remain confidential. Can you please introduce yourself? \n\nHow is your day going? How have you been feeling lately?"
+    },
+    {
+        "role": "user",
+        "content": "I am feeling depressed"
+    },
+    {
+        "role": "system",
+        "content": "I'm sorry to hear that you're feeling this way. It's important to remember that you're not alone and there are people who are here to support you. Would you like to talk about what has been causing you to feel this way or how you've been coping with these emotions?"
+    },
+    {
+        "role": "user",
+        "content": "I am feeling depressed"
+    },
+    {
+        "role": "system",
+        "content": "If you're comfortable, would you like to share more about what's been weighing you down or contributing to your feelings of depression? Talking about it might help you feel a bit better."
+    },
+    {
+        "role": "user",
+        "content": "I am feeling depressed"
+    },
+    {
+        "role": "assistant",
+        "content": "Feeling depressed can be incredibly challenging, and it's important to take your feelings seriously. It's okay to not feel okay, and it's commendable that you're reaching out for help. If you're open to it, I'm here to listen and provide support. You don't have to go through this alone. Would you like to share more about what's been on your mind or how you've been feeling?"
+    },
+    {
+        "role": "user",
+        "content": "I am feeling depressed"
+    },
+    {
+        "role": "assistant",
+        "content": "I'm here for you. If you're comfortable, I'd like to listen and try to help you through this difficult time. Remember, you're not alone in this, and seeking support is a brave step towards healing. Is there anything specific that's been troubling you or contributing to your feelings of depression that you'd like to talk about?"
+    },
+    {
+        "role": "user",
+        "content": "hello"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello! How are you feeling today?"
+    },
+    {
+        "role": "user",
+        "content": "my name is stark"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello, Stark! It's nice to meet you. How has your day been so far?"
+    },
+    {
+        "role": "user",
+        "content": "not good, the day has already started with a bad luck"
+    },
+    {
+        "role": "assistant",
+        "content": "I'm sorry to hear that your day started off on the wrong foot. It's tough when things don't go as we hope or expect. If you feel comfortable sharing, I'm here to listen. Sometimes talking about what's bothering us can help lighten the emotional load."
+    },
+    {
+        "role": "user",
+        "content": "very furious"
+    },
+    {
+        "role": "assistant",
+        "content": "It's completely understandable to feel frustrated and furious when things aren't going well. It's important to acknowledge and validate those emotions. If you'd like, we can talk about what happened or find ways to cope with these feelings. Just know that you're not alone in feeling this way, and I'm here to support you."
+    },
+    {
+        "role": "user",
+        "content": "breath issue and i feel like i wont live for long"
+    },
+    {
+        "role": "assistant",
+        "content": "I'm sorry to hear that you're struggling with breathing issues and feeling like you won't live for long. It's important to take these feelings seriously. If you're experiencing severe breathing difficulties or thoughts of self-harm, it's crucial to seek immediate help from a healthcare professional or emergency services. Your life is valuable, and there are people who care about you and want to support you through this difficult time. Please prioritize your well-being and safety. Would you like help in finding resources or support services for your breathing concerns?"
     }
 ]

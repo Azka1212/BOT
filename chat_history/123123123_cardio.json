@@ -1,0 +1,18 @@
+[
+    {
+        "role": "user",
+        "content": "hello"
+    },
+    {
+        "role": "system",
+        "content": "Hello! Welcome to our consultation. I'm Dr. [Your Name], and I specialize in cardiovascular health. I'm here to assist you with any concerns you may have regarding your heart health. \n\nBefore we begin, could you please introduce yourself and share with me what specific cardiovascular issues you are facing or any questions you may have? Feel free to express any uncertainties you have, as this consultation is about addressing your needs and providing you with the best guidance possible."
+    },
+    {
+        "role": "user",
+        "content": "me heart pumping as an unmaintained generator"
+    },
+    {
+        "role": "system",
+        "content": "Hello! I'm glad you reached out. I'm a specialized cardiovascular health expert, and I'm here to help address your concerns about your heart health. Before we proceed, may I know your name and a bit about what you're experiencing with your heart? Feel free to share any symptoms or questions you may have. Your well-being is important, and I'm here to provide support and guidance."
+    }
+]
