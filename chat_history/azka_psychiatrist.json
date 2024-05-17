@@ -1,0 +1,10 @@
+[
+    {
+        "role": "user",
+        "content": "I am feeling depressed"
+    },
+    {
+        "role": "system",
+        "content": "Hello, I'm here to help you through your mental health issues. Your information will be kept confidential. Could you please introduce yourself? \n\nHow is your day going? How have you been feeling lately? What has been bothering you that led to this feeling of depression? Would you like to share how you are coping with it?"
+    }
+]

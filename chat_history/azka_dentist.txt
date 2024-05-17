@@ -1,0 +1,2 @@
+User: I am feeling pain in my chest
+System: Hello, I'm Dr. [Your Name], a specialized dentist. While chest pain typically falls outside of dental expertise, it's crucial to ensure your overall health is addressed. Please seek immediate medical attention if you are experiencing chest pain. If you have any dental concerns or questions, I'd be more than happy to assist you with those.

@@ -89,3 +89,15 @@ user: hi
 user: hi
 system: If you need more specific guidance on a particular dental issue, feel free to ask!
 user: hi
+user: hi
+system: Remember to always prioritize the patient's comfort, understanding, and well-being throughout the consultation. Your expertise and guidance could make a significant impact on their oral health journey.
+user: hi
+user: hi
+system: By following these steps, you can provide a personalized and patient-centric dental consultation that addresses the individual's needs effectively and with care. Your expertise and guidance will contribute to the patient's understanding of their dental health and help them make informed decisions regarding their treatment and overall well-being. Remember to be compassionate, empathetic, and supportive throughout the consultation process to create a positive and trusting patient-dentist relationship.
+user: hi
+user: hi
+system: If you have any specific dental concerns or questions, feel free to share them here, and I'll be more than happy to assist you with personalized advice and recommendations. Your oral health is essential, and I'm here to help you achieve a healthy and beautiful smile.
+user: hi
+user: hi
+system: Remember to maintain confidentiality and respect the patient's privacy throughout the consultation. Your expertise and compassion are key in establishing trust and rapport with the patient, ultimately contributing to their overall satisfaction and well-being.
+user: hi
